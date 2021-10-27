@@ -1,0 +1,102 @@
+TH man 1 "27 October 2021" "0.20" "ALX man page"
+.SH NAME
+.B alx
+- Simple Shell Studying purpose ALX SE program
+.SH SYNOPSIS
+.B ./alx 
+[command] [options] [FILE]
+.SH COPYRIGHT
+.B alx 
+is Copyright (C) Simegnew Misganaw and Ibrahim Morketa.
+.SH DESCRIPTION
+.B alx 
+(Simple Shell) is a team project for students at ALX SE program we expore, understand and build a working functional simple shell program.
+.B Overview
+
+The simple shell is a simplified iteration of a command line interpreter, similar to 
+.B bash or 
+.B dash. 
+.I FORMAT [ARGUMENT]...
+.SH OPTIONS
+.B alx
+operates in both 
+.I interactive 
+and 
+.I non-interactive
+ mode. The user may initiate 
+.B simple shell
+and begin working or initate 
+.B simple shell
+using commands meant to be run by the program.
+.SH ARGUMENTS
+The first argument, argument 0 is understood to be the command to be run by 
+.B simple shell
+and arguments following as modifiers or options.
+.SH INVOCATION
+.B alx
+may be invoked with the same functionality in 
+.I interactive 
+or 
+.I non-interactive 
+mode.  The user may quit the program by typing "exit", "Ctrl + D", on the command line.
+When the program quits or a command has been executed, 
+.B simple shell 
+returns with a new prompt: "$ "
+
+.B Example
+.IP
+
+$./alx
+
+$pwd
+
+Username@your-regular-prompt:~$
+
+$
+
+$/bin/pwd
+
+Username@your-regular-prompt:~$
+$
+
+.SH RESERVED WORDS
+.B exit: 
+quits the program, exits the shell.
+
+.B env: 
+prints the environment variables
+
+.SH HISTORY
+The 
+.B history 
+built-in displays the history list, one command per line, preceded with line numbers, starting with 0. On exit the entire history is written to a file named
+.I simple_shell_history
+in the 
+.I $HOME
+directory.
+.SH SHELL BUILTIN COMMANDS
+The commands 
+.B exit
+,
+.B env
+,
+.B help
+and
+.B echo
+are handled automatically by 
+.B alx
+
+.SH SEE ALSO
+.I sh(1)
+,
+.I bash(1)
+,
+.I _printf(3)
+
+.SH BUGS
+No Known bug , please 
+Report 
+.B alx
+bugs to https://github.com/ibrisha/simple_shell
+.SH AUTHOR
+Ibrahim Morketa & Simegnew Misganaw
