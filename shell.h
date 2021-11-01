@@ -118,3 +118,63 @@ history_t *history_list(arg_inventory_t *arginv);
 history_t *add_node_history(history_t **head, char *command);
 int file_history(arg_inventory_t *arginv);
 char *history_to_string(history_t *head);
+history_t *init_history(history_t *head, char *buffer);
+
+/* -----alias----- */
+int write_alias(alias_t *head);
+alias_t *alias_list(void);
+alias_t *add_node_alias(alias_t **head, char *alias, char *command);
+int modify_node_alias(alias_t **head, char *new_var, char *new_val);
+int remove_node_alias(alias_t **head, char *var);
+alias_t *fetch_node_alias(alias_t *head, char *var);
+
+/* ---------------cd--------------- */
+char *file_path(char **commands, env_t *envlist);
+env_t *fetch_node(env_t *head, char *var);
+
+/* ---------------printer--------------- */
+int write_uint(unsigned int n);
+unsigned int write_history(history_t *head);
+void _puts(char *str);
+size_t print_list(env_t *head);
+int _putchar(char c);
+
+/* ---------------file I/O--------------- */
+ssize_t read_textfile(char *filename, size_t letters);
+int trunc_text_to_file(char *filename, char *text_content);
+int append_text_to_file(char *filename, char *text_content);
+
+/* ---------------link_path--------------- */
+int locate_path(char *path, env_t *envlist);
+int cat_path(char **search_path, char *cmd);
+int is_path(char *command);
+int count_paths(char *path_str);
+char **tokenize_path(char *path_str);
+void free_paths(char **paths);
+
+/* ---------------parsetree--------------- */
+ptree_t *ptree_new_node(ptree_t *parent);
+ptree_t *ptree_new_string_node(ptree_t *parent, tokens_t *tokens,
+							   unsigned int *cur_token);
+int delete_ptree(ptree_t *node);
+
+/* ---------------parser--------------- */
+int parse_error(token_t *near);
+ptree_t *parse_expr(unsigned int *ntoken, tokens_t *tokens, ptree_t *lhs,
+					int min_prec);
+int parse(parser_t *parser, tokens_t *tokens);
+int delete_parser(parser_t *parser);
+void expand_bash_vars(arg_inventory_t *arginv);
+int expand_alias(arg_inventory_t *arginv);
+
+/* ---------------processor--------------- */
+unsigned int init_pipeline_count_processes(ptree_t *tree);
+int init_pipeline_push_processes(pipeline_t *pipeline, ptree_t *tree);
+int init_pipeline(pipeline_t *pipeline, ptree_t *ptree);
+int process_execute_core(arg_inventory_t *arginv);
+int process_execute(arg_inventory_t *arginv);
+int delete_pipeline(pipeline_t *pipeline);
+
+/* ---------------free--------------- */
+int freeall(arg_inventory_t *arginv);
+int free_environ(env_t *head);
