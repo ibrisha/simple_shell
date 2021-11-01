@@ -178,3 +178,17 @@ int delete_pipeline(pipeline_t *pipeline);
 /* ---------------free--------------- */
 int freeall(arg_inventory_t *arginv);
 int free_environ(env_t *head);
+int free_history(history_t *head);
+int free_alias(alias_t *head);
+
+/* ----help---- */
+void help_exit(void);
+void help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_history(void);
+void help_cd(void);
+void help_alias(void);
+void help_help(void);
+
+#endif
