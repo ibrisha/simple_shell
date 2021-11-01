@@ -58,3 +58,63 @@ pid_t exec_path(char *command, arg_inventory_t *arginv);
 
 /* ---------------tokenizer--------------- */
 int delete_tokens(tokens_t *tokens);
+void tokenize(tokens_t *tokens, const char *string);
+int is_redirection(int token_id);
+void init_tokens(tokens_t *tokens, int length);
+void delete_dups(tokens_t *tokens);
+void token_classify(tokens_t *tokens);
+void cleanup_tokens(tokens_t *tokens, unsigned int tokens_idx, char *data);
+
+/* -------custom environ------- */
+env_t *env_list(void);
+char **separate_string(char *string);
+unsigned int link_count(env_t *head);
+char **link_to_dpointer(env_t *head);
+env_t *add_node_env(env_t **head, char *var, char *val);
+int modify_node_env(env_t **head, char *new_var, char *new_val);
+int remove_node_env(env_t **head, char *var);
+
+/* ---------------builtin--------------- */
+int _env(arg_inventory_t *arginv);
+int _setenv(arg_inventory_t *arginv);
+int _history(arg_inventory_t *arginv);
+int _cd(arg_inventory_t *arginv);
+int _alias(arg_inventory_t *arginv);
+int _unalias(arg_inventory_t *arginv);
+int shell_help(arg_inventory_t *arginv);
+int load_alias(arg_inventory_t *arginv);
+int save_alias(arg_inventory_t *arginv);
+int shell_exit(arg_inventory_t *arginv);
+
+/* ---------------strings--------------- */
+char *_strncpy(char *dest, char *src, int n);
+char *_strdup(char *str);
+unsigned int _strlen(const char *str);
+char *_strcpy(char *dest, char *src);
+char *_strncat(char *dest, char *src, int n);
+int _strcmp(const char *s1, const char *s2);
+int _strncmp(char *s1, char *s2, unsigned int n);
+int _unsetenv(arg_inventory_t *arginv);
+char *_strcat(char *dest, char *src);
+char *int_to_str(unsigned int n);
+void replace_str(char **old_str, char *new_str, int i, int j, int flg);
+char *_str_replace(char *string, unsigned int start, unsigned int end,
+				   char *rep);
+
+/* -----custom C std lib----- */
+char _isspace(char c);
+int _atoi(char *s);
+void _perror(char *string);
+void _memmove(void *dest, void *src, size_t n);
+int is_uint(char *num);
+
+/* ---------------custom malloc--------------- */
+char *mem_reset(char *str, int bytes);
+void *safe_malloc(int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
+/* ---------------history--------------- */
+history_t *history_list(arg_inventory_t *arginv);
+history_t *add_node_history(history_t **head, char *command);
+int file_history(arg_inventory_t *arginv);
+char *history_to_string(history_t *head);
