@@ -22,7 +22,7 @@ int main(void)
 {
 	arg_inventory_t *arginv;
 	int exit_status;
-	
+
 	arginv = buildarginv();
 	signal(SIGINT, sig_handler);
 	while (!arginv->exit)
