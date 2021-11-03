@@ -1,102 +1,147 @@
-TH man 1 "27 October 2021" "0.20" "ALX man page"
+.\" simple_shell man page
+.\"
+.\"
+.TH simple_shell 1 "3 November 2021" "Alx students simple_shell"
+
+
+
 .SH NAME
-.B alx
-- Simple Shell Studying purpose ALX SE program
+
+.B simple_shell (hsh)
+- command interpreter (shell)
+
+
+
 .SH SYNOPSIS
-.B ./alx 
-[command] [options] [FILE]
+
+.B	./hsh
+
+
+
 .SH COPYRIGHT
-.B alx 
-is Copyright (C) Simegnew Misganaw and Ibrahim Morketa.
+
+simple_shell is Public Domain, no copyright protection
+
+
+
 .SH DESCRIPTION
-.B alx 
-(Simple Shell) is a team project for students at ALX SE program we expore, understand and build a working functional simple shell program.
-.B Overview
 
-The simple shell is a simplified iteration of a command line interpreter, similar to 
-.B bash or 
-.B dash. 
-.I FORMAT [ARGUMENT]...
-.SH OPTIONS
-.B alx
-operates in both 
-.I interactive 
-and 
-.I non-interactive
- mode. The user may initiate 
-.B simple shell
-and begin working or initate 
-.B simple shell
-using commands meant to be run by the program.
-.SH ARGUMENTS
-The first argument, argument 0 is understood to be the command to be run by 
-.B simple shell
-and arguments following as modifiers or options.
+simple_shell replicates a command line interpreter (a shell), which is a user \
+interface program for access to an operating system's services.  This shell \
+is designed to interact with a linux distribution or unix like system that \
+uses linux system calls and other commands found in the linux PATH, for \
+example, the
+.B $PATH:
+.P
+.RS
+.B /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
+.P
+.RE
+simple_shell has a set of custom built-in commands, and also integrates with other \
+commands located in the system's PATH.  The output is designed to exactly or \
+as close as possible replicate the shell 'sh' or 'dash'
+.B $ man dash
+.  simple_shell \
+takes commands from files, shell scripts or user input in either an \
+interactive or non-interactive mode (explained in INVOCATION section).
+
+
+
+
 .SH INVOCATION
-.B alx
-may be invoked with the same functionality in 
-.I interactive 
-or 
-.I non-interactive 
-mode.  The user may quit the program by typing "exit", "Ctrl + D", on the command line.
-When the program quits or a command has been executed, 
-.B simple shell 
-returns with a new prompt: "$ "
 
-.B Example
-.IP
+to initialize simple_shell, you must compile all the included files using the GNU \
+compiler collection: gcc.  Then run the output file, with a command such as \
+this: $ ./a.out.  simple_shell has been written to pass all of these warning checks \
+and was designed to be compiled with the following command:
+.P
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.P
+.RE
+if simple_shell is executed, it will initialize in what is considered 'interactive \
+mode.'  In this scenario, the user is prompted for a command and then the \
+command is executed after the newline or 'enter' is input.  simple_shell can also \
+function in non-interactive mode by using shell scripts, such as a '|' before
+the simple_shell executable file ('hsh').  This is an example:
+.P
+.RS
+.B $ echo 'ls' | ./hsh
+.P
+.RE
+Commands may also be input into simple_shell through a file containing commands:
+.P
+.RS
+.B $ cat aFile | ./hsh
+.P
+.RE
 
-$./alx
 
-$pwd
 
-Username@your-regular-prompt:~$
+.SH OPTIONS
 
-$
+simple_shell does not take any options but does utilize the variable extern char \
+**environ.  This is currently part of the future goals of simple_shell
 
-$/bin/pwd
 
-Username@your-regular-prompt:~$
-$
+.SS BUILT-IN COMMANDS
 
-.SH RESERVED WORDS
-.B exit: 
-quits the program, exits the shell.
+.RS
+This secion has information on the included builtin commands with simple_shell
 
-.B env: 
-prints the environment variables
+.Bl -tag -width "PAGEIN" -compact -offset indent
 
-.SH HISTORY
-The 
-.B history 
-built-in displays the history list, one command per line, preceded with line numbers, starting with 0. On exit the entire history is written to a file named
-.I simple_shell_history
-in the 
-.I $HOME
-directory.
-.SH SHELL BUILTIN COMMANDS
-The commands 
-.B exit
-,
+.It
 .B env
-,
-.B help
-and
-.B echo
-are handled automatically by 
-.B alx
+- writes environment to stdout
 
-.SH SEE ALSO
-.I sh(1)
-,
-.I bash(1)
-,
-.I _printf(3)
+.IT
+.B setenv
+- sets or changes an environmental variable. example: 'setenv USER=bobby'
+
+.IT
+.B unsetenv
+- removes environmental variable. example: 'unsetenv USER'
+
+.IT
+.B history
+- writes history to stdout
+
+
+.IT
+.B exit
+- exits simple_shell
+
+.IT
+.B cd
+- changes working directory
+
+.IT
+.B help
+- used with another command prints help message.  example: 'help env'
+
+.IT
+.B alias
+- creates an alias.  example 'alias ll='ls -la''
+
+.IT
+.B unalias
+- removes an alias.  example 'unalias ll'
+.RE
+
+
+.SH "SEE ALSO"
+
+.BR sh (1),
+.BR bash (1),
+
+
 
 .SH BUGS
-No Known bug , please 
-Report 
-.B alx
-bugs to https://github.com/ibrisha/simple_shell
+
+none known.  simple_shell does not currently replicate these tasks:
+
 .SH AUTHOR
-Ibrahim Morketa & Simegnew Misganaw
+
+Ibrahim Morketa <ibrahimbsc8@gmail.com>
+Simegnew Misganaw <simegnew.misganaw@gmail.com>
