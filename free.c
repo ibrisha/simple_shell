@@ -22,8 +22,8 @@ int freeall(arg_inventory_t *arginv)
 		if (arginv->input_commands)
 			free(arginv->input_commands);
 		exit_status = arginv->exit_status;
+		free(arginv);
 	}
-	/*free(arginv);*/
 	return (exit_status);
 }
 
